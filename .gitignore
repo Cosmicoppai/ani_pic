@@ -1,2 +1,6 @@
 # プロジェクトの除外パス
 /venv/
+.idea
+desktop.ini
+db
+/anipic/db.sqlite3
