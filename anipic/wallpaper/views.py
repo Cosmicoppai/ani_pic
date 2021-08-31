@@ -1,23 +1,41 @@
-from rest_framework import status, generics
+from rest_framework import status, permissions
+from rest_framework.views import APIView
 from .models import WallPaper
 from .serializers import PicSerializer
+from rest_framework.response import Response
 
 
-class PicList(generics.ListAPIView):
-    serializer_class = PicSerializer
+class PicList(APIView):
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-    def get_queryset(self):
-        _tag = self.request.query_params.get('tag', None)
+    @staticmethod
+    def get_queryset(_tag):
         if _tag:
-            return WallPaper.objects.filter(tag=_tag, is_nsfw=False)
+            return WallPaper.objects.filter(is_nsfw=False, tag=_tag)
         return WallPaper.objects.filter(is_nsfw=False)
 
+    def get(self, request, **kwargs):
+        tag = kwargs['tag']
+        wallpapers = self.get_queryset(_tag=tag)
+        if wallpapers.exists():
+            serializer = PicSerializer(wallpapers, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(headers={"error":"Invalid Tag"},status=status.HTTP_404_NOT_FOUND)
 
-class NsfwPicList(generics.RetrieveAPIView):
-    serializer_class = PicSerializer
 
-    def get_queryset(self):
-        _tag = self.request.query_params.get('tag', None)
+class NsfwPicList(APIView):
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    @staticmethod
+    def get_queryset(_tag):
         if _tag:
-            return WallPaper.objects.filter(is_nsfw=True, _tag=_tag)
+            return WallPaper.objects.filter(is_nsfw=True, tag=_tag)
         return WallPaper.objects.filter(is_nsfw=True)
+
+    def get(self, request, **kwargs):
+        tag = kwargs['tag']
+        wallpapers = self.get_queryset(_tag=tag)
+        if wallpapers.exists():
+            serializer = PicSerializer(wallpapers, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(headers={"error": "Invalid Tag"}, status=status.HTTP_404_NOT_FOUND)
