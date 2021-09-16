@@ -18,7 +18,7 @@ class PicList(APIView):
         tag = kwargs['tag']
         wallpapers = self.get_queryset(_tag=tag)
         if wallpapers.exists():
-            serializer = PicSerializer(wallpapers, many=True)
+            serializer = PicSerializer(wallpapers, many=True, context={'request': request})
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(headers={"error":"Invalid Tag"},status=status.HTTP_404_NOT_FOUND)
 
@@ -36,6 +36,6 @@ class NsfwPicList(APIView):
         tag = kwargs['tag']
         wallpapers = self.get_queryset(_tag=tag)
         if wallpapers.exists():
-            serializer = PicSerializer(wallpapers, many=True)
+            serializer = PicSerializer(wallpapers, many=True, context={'request': request})
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(headers={"error": "Invalid Tag"}, status=status.HTTP_404_NOT_FOUND)

@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'wallpaper',
-    'drf_yasg',
+    'quote',
 ]
 
 """==============================================================================================================="""
