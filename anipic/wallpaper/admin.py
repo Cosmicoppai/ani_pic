@@ -9,6 +9,7 @@ class AniPicAdmin(admin.ModelAdmin):
     date_hierarchy = 'created'
     search_fields = ('title', 'tag', 'created')
     list_filter = ('title', 'tag', 'created', 'is_nsfw')
+    list_display = ('title', 'image', 'tag')
 
 
 admin.site.unregister(Group)

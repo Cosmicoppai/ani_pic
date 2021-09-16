@@ -8,3 +8,4 @@ class QuoteAdmin(admin.ModelAdmin):
     date_hierarchy = 'created'
     search_fields = ('quote', 'tag', 'created')
     list_filter = ('quote', 'tag', 'created')
+    list_display = ('quote', 'tag')
