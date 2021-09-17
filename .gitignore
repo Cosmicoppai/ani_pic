@@ -4,4 +4,5 @@
 desktop.ini
 db
 /anipic/db.sqlite3
-/anipic/anipic/.env
+/anipic/.env
+.env

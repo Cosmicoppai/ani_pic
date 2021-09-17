@@ -4,7 +4,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -14,8 +13,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-wp4u1un^jz^-b6_)m$8*c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG')) == '1'
 
-ALLOWED_HOSTS = ['localhost',]
-
+ALLOWED_HOSTS = ['localhost', ]
 
 # Application definition
 
@@ -26,7 +24,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 3rd Party
     'rest_framework',
+
+    # Local
     'wallpaper',
     'quote',
 ]
@@ -64,6 +66,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'anipic.wsgi.application'
 
 """============================================================================================================"""
+# Rest Framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 3
+}
+
+"""============================================================================================================="""
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -91,7 +101,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -108,7 +117,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 MEDIA_URL = "/pics/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'wallpapers')
