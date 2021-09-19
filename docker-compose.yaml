@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  # Postgres Database
+  datbase:
+    image: postgres:14beta2
+    ports:
+    - 5432:5432
+    restart: always
+
+  # Django App
+  backend:
+    build:
+      context: ./anipic
+    depends_on:
+      - database
+    ports:
+    - 8000:8000
+    env_file:
+      - .env
+    restart: always
