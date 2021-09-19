@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Quote
+from rest_framework.test import APIClient
 
 
 class QuoteModelTest(TestCase):
@@ -14,4 +15,10 @@ class QuoteModelTest(TestCase):
         self.assertEqual(quote.tag, 'trash')
 
     def test_api(self):
-        pass
+        api = APIClient()
+        success_code = api.get('/quotes').status_code
+        success_code_code_1 = api.get('/quotes/trash').status_code
+        error_code = api.get('/quotes/no-trash').status_code
+        self.assertEqual(success_code, 200)
+        self.assertEqual(success_code_code_1, 200)
+        self.assertEqual(error_code, 404)

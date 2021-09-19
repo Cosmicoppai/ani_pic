@@ -4,6 +4,7 @@ from .models import WallPaper
 from io import BytesIO
 from PIL import Image
 from django.core.files import File
+from rest_framework.test import APIClient
 
 
 
@@ -45,3 +46,13 @@ class WallpaperModelTest(TestCase):
         if os.path.isfile(f"wallpapers/{_image}"):
             os.remove(f"wallpapers/{_image}")
         self.assertEqual(expected_image, _image)
+
+
+    def test_image_api(self):
+        api = APIClient()
+        success_response = api.get('/pics/sfw').status_code
+        success_response_1 = api.get('/pics/sfw/fruit-basket').status_code
+        error_response = api.get('/pics/nsfw').status_code
+        self.assertEqual(success_response, 200)
+        self.assertEqual(success_response_1, 200)
+        self.assertEqual(error_response, 404)
