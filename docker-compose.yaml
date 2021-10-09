@@ -3,33 +3,52 @@ services:
   # Postgres Database
   database:
     image: postgres:14beta2
-    ports:
-    - 5432:5432
     volumes:
     - db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=ANIPIC
-      - POSTGRES_USER=KIN
-      - POSTGRES_PASSWORD=ANIPIC@123
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     restart: always
 
   # Django App
   backend:
-    build: .
-    command: >
-      sh -c "python manage.py wait_for_db &&
-             python manage.py migrate &&
-             gunicorn anipic.wsgi:application --bind 0.0.0.0:8000"
+    build:
+      context: .
     volumes:
-    - wallpapers:/wallpapers
+    - static-data:/vol/web
     depends_on:
       - database
-    ports:
-    - 8000:8000
     env_file:
       - .env
     restart: always
 
+  # Nginx
+  proxy:
+    image: nginx:alpine
+    ports:
+    - 443:443
+    - 80:80
+    volumes:
+    - static-data:/vol/static
+    - ./proxy/default.conf:/etc/nginx/conf.d
+    - ./data/certbot/conf:/etc/letsencrypt
+    - ./data/certbot/www:/var/www/certbot
+    command: "/bin/sh -c 'while :; do sleep 6h && wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    restart: always
+    depends_on:
+      - backend
+
+  # Certbot
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    depends_on:
+      - nginx
+
 volumes:
   db:
-  wallpapers:
+  static-data:

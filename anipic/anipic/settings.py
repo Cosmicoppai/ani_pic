@@ -76,10 +76,10 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ANIPIC',
-        'USER': 'KIN',
-        'PASSWORD': 'ANIPIC@123',
-        'HOST': 'database',  # name of the database container
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),  # name of the database container
         'PORT': '5432',
     }
 }
@@ -119,12 +119,15 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = '/vol/web/static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = "/pics/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'wallpapers')
+MEDIA_URL = "/static/pics/"
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'wallpapers')
+MEDIA_ROOT = '/vol/web/pics'
 
 """====================================================================================================================="""
 # HTTPS

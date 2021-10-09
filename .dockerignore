@@ -144,3 +144,4 @@ docker-compose.yaml
 README.md
 anipic/.env
 anipic/wallpapers/
+anipic/db.sqlite3

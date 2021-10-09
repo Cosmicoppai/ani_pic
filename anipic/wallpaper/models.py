@@ -16,4 +16,4 @@ class WallPaper(models.Model):
         return f"{self.title} - {self.image} - {self.created}"
 
     def get_absolute_url(self):
-        return f"/pics/{self.image}/"
+        return f"/static/pics/{self.image}/"
