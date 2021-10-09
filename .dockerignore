@@ -143,3 +143,4 @@ Dockerfile
 docker-compose.yaml
 README.md
 anipic/.env
+anipic/wallpapers/

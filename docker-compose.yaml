@@ -1,16 +1,27 @@
 version: '3.8'
 services:
   # Postgres Database
-  datbase:
+  database:
     image: postgres:14beta2
     ports:
     - 5432:5432
+    volumes:
+    - db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=ANIPIC
+      - POSTGRES_USER=KIN
+      - POSTGRES_PASSWORD=ANIPIC@123
     restart: always
 
   # Django App
   backend:
-    build:
-      context: ./anipic
+    build: .
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             python manage.py migrate &&
+             gunicorn anipic.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+    - wallpapers:/wallpapers
     depends_on:
       - database
     ports:
@@ -18,3 +29,7 @@ services:
     env_file:
       - .env
     restart: always
+
+volumes:
+  db:
+  wallpapers:

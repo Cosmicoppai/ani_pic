@@ -1,19 +1,15 @@
 from pathlib import Path
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-wp4u1un^jz^-b6_)m$8*cc7hkf&s*mzvpz%3u3^ba&35%cb!s#')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = str(os.environ.get('DEBUG')) == '1'
 
-ALLOWED_HOSTS = ['localhost', ]
+ALLOWED_HOSTS = [os.environ.get('HOST', default="127.0.0.1"), '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -79,10 +75,19 @@ REST_FRAMEWORK = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ANIPIC',
+        'USER': 'KIN',
+        'PASSWORD': 'ANIPIC@123',
+        'HOST': 'database',  # name of the database container
+        'PORT': '5432',
     }
 }
+
+"""============================================================================================================="""
+# Redis
+
+
 
 """=============================================================================================================="""
 
@@ -120,3 +125,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = "/pics/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'wallpapers')
+
+"""====================================================================================================================="""
+# HTTPS
+
+"""
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+"""
