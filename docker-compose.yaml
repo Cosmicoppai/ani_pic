@@ -24,7 +24,7 @@ services:
     restart: always
 
   # Nginx
-  proxy:
+  nginx:
     image: nginx:alpine
     ports:
     - 443:443
