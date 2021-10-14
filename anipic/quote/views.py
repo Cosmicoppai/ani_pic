@@ -15,7 +15,7 @@ class QuoteList(APIView):
     @staticmethod
     def get_queryset(tag: str):
         if tag:
-            return Quote.objects.filter(tag=tag)
+            return Quote.objects.filter(tag__iexact=tag)
         return Quote.objects.all()
 
     def get(self, request, **kwargs):

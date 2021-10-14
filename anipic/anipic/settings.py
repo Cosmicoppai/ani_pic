@@ -66,12 +66,14 @@ WSGI_APPLICATION = 'anipic.wsgi.application'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 12
+    'PAGE_SIZE': 12,
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
 }
 
 """============================================================================================================="""
 # Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {

@@ -12,7 +12,7 @@ class PicList(GenericAPIView):
     def get_queryset(self):
         _tag = self.kwargs['tag']
         if _tag:  # check if tag exists in the url or not
-            return WallPaper.objects.filter(is_nsfw=False, tag=_tag)
+            return WallPaper.objects.filter(is_nsfw=False, tag__iexact=_tag)
         return WallPaper.objects.filter(is_nsfw=False)
 
     def get(self, request, **kwargs):
@@ -31,7 +31,7 @@ class NsfwPicList(GenericAPIView):
     def get_queryset(self):
         _tag = self.kwargs['tag']
         if _tag:
-            return WallPaper.objects.filter(is_nsfw=True, tag=_tag)
+            return WallPaper.objects.filter(is_nsfw=True, tag__iexact=_tag)
         return WallPaper.objects.filter(is_nsfw=True)
 
     def get(self, request, **kwargs):
