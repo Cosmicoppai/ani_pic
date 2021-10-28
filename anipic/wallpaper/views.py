@@ -3,6 +3,12 @@ from rest_framework.generics import GenericAPIView
 from .models import WallPaper
 from .serializers import PicSerializer
 from rest_framework.response import Response
+from django.views.generic import TemplateView
+
+
+
+class Home(TemplateView):
+    template_name = 'index.html'
 
 
 class PicList(GenericAPIView):
