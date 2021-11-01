@@ -54,3 +54,4 @@ services:
 volumes:
   db:
   static-data:
+  templates:
