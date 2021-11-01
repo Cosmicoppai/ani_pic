@@ -51,9 +51,296 @@
             }
         }
     </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    <title>Anipic</title>
+    <style>
+        body {
+            background-color: #212529;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            overflow-x: none;
+            width: 0;
+            background: #212529;
+        }
+
+        #pre {
+            margin: auto;
+            background-color: #FFFFFF;
+        }
+
+        #pre2 {
+            margin: auto;
+            background-color: #FFFFFF;
+        }
+
+
+        @media only screen and (max-width: 600px) {
+            #pre {
+                margin: 0;
+                margin-left: -200px;
+            }
+
+            #pre2 {
+                margin: 0;
+                margin-left: -200px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container  d-flex justify-content-center">
+            <a class="navbar-brand " href="/" style="margin-bottom: -20px; margin-top: -8px;">
+                <h2 style="font-family: 'Space Mono', monospace;" class="display-4">Anipic</h2>
+            </a>
+        </div>
+    </nav>
+    <div class="container w-100 w-xl-75 w-xxl-75 w-lg-75 w-md-75 d-flex justify-content-center mt-3 ">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            If you have any issues or questions with the API, please create a Github issue at
+            <a href="https://github.com/Cosmicoppai/ani_pic" style="color: #88671D;"
+                target="_blank">https://github.com/Cosmicoppai/ani_pic</a>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    <main
+        class="container w-xl-50 w-xxl-50 w-lg-50 w-md-50 d-flex justify-content-center mt-3 border border-1 flex-column bg-light">
+        <h1 class="text-center display-5 fw-bold ">API Docs</h1>
+        <p class="text-center">
+            The open and supported part of the Anipic API is incredibly easy to use.
+            <br>
+            You can find more information about how to utilize this in your application below.
+        </p>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check " name="section" id="imageSection" autocomplete="off" onclick="image()"
+                checked>
+            <label class="btn btn-outline-dark py-3 border-0 me-2 " for="imageSection"> <h5>Image API</h5></label>
+            <input type="radio" class="btn-check" name="section" id="quoteSection" onclick="quote()" autocomplete="off">
+            <label class="btn btn-outline-dark py-3 border-0" for="quoteSection"><h5>Quotes API</h5></label>
+        </div>
+        <hr>
+        <section id="image" style="display: block;">
+            <h2 class="text-center mb-2 ">Image Categories</h2>
+            <div class="btn-group d-flex justify-content-center w-25 mx-auto role=" group"
+                aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" onclick="sfw()"
+                    checked>
+                <label class="btn btn-outline-dark border-0  me-2" for="btnradio1"> SFW</label>
+                <input type="radio" class="btn-check " name="btnradio" id="btnradio2" autocomplete="off"
+                    onclick="nsfw()">
+                <label class="btn btn-outline-dark  border-0" for="btnradio2">NSFW</label>
+            </div>
+            <ul class="list-group text-start w-50 mt-2 border  border-dark " style="display: block; margin: auto; max-height: 250px;
+                        overflow-y: auto;  " id="sfw">
+                <li class="list-group-item ">Cat girl</li>
+                <li class="list-group-item ">Waifu</li>
+                <li class="list-group-item ">Maid</li>
+                <li class="list-group-item ">Kawaii</li>
+                <li class="list-group-item ">Pat</li>
+                <li class="list-group-item ">Kiss</li>
+                <li class="list-group-item ">Hug</li>
+                <li class="list-group-item ">Tsundre</li>
+                <li class="list-group-item ">Yandere</li>
+                <li class="list-group-item ">Shounen</li>
+                <li class="list-group-item ">Seinen</li>
+            </ul>
+            <ul class="list-group text-start w-50  mt-2 border  border-dark " style="display: none; margin: auto; max-height: 250px;
+                        overflow-y: auto;  " id="nsfw">
+                <li class="list-group-item ">Cat girl</li>
+                <li class="list-group-item ">Waifu</li>
+                <li class="list-group-item ">Maid</li>
+                <li class="list-group-item ">Kawaii</li>
+                <li class="list-group-item ">Pat</li>
+                <li class="list-group-item ">Kiss</li>
+                <li class="list-group-item ">Hug</li>
+                <li class="list-group-item ">Tsundre</li>
+                <li class="list-group-item ">Yandere</li>
+                <li class="list-group-item ">Shounen</li>
+                <li class="list-group-item ">Seinen</li>
+            </ul>
+            <hr>
+            <h2 class="text-center  mb-2 ">Get Image</h2>
+            <table class="table w-50 mx-auto">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">URL</th>
+                        <th scope="col">Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">https://anipic.live/pics/type/category</td>
+                        <td>GET</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="fst-italic mx-auto text-center" style="font-size:10px;">
+                *The only valid types are sfw and nfsw.You can
+                choose category according to the types you like from the ones given above.
+            </p>
+            <h5 class="text-center  mb-2 ">Search Parameters</h5>
+            <table class="table w-50 mx-auto">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Default</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td >limit</td>
+                        <td>Integer</td>
+                        <td>12</td>
+                        <td>Number of images to return</td>
+                    </tr>
+                    <tr>
+                        <td >offset</td>
+                        <td>Integer</td>
+                        <td>0</td>
+                        <td>Offset parameter controls the starting point within the collection of resource results</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <h2 class="text-center  mb-2 ">Response</h2>
+            <span class="justify-content-center h5" id="response" style="display: flex;"
+                onclick="response()">{....}</span>
+            <div class="  mb-3   " id="pre" style="display: none;">
+                <pre>
+                    <code style="color: #E21144;">
+                        <span style="color: rgba(0, 0, 0, 0.459);">{</span>
+                                "count"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">3</span><span style="color:rgba(0, 0, 0, 0.459);">,</span>
+                                "next"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">null</span><span style="color:rgba(0, 0, 0, 0.459);">,</span>
+                                "previous"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">null</span><span style="color:rgba(0, 0, 0, 0.459);">,</span>
+                                "results"<span style="color: rgba(0, 0, 0, 0.459);">:</span> <span style="color: rgba(0, 0, 0, 0.459);">[</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">{</span>
+                                        "title"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">"Pikachu"</span><span style="color:rgba(0, 0, 0, 0.459);">,</span>
+                                        "image"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">"https://anipic.live/static/pics/pikachu_X6kZX7r.png"</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">},</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">{</span>
+                                        "title"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">"Mugen"</span><span style="color:rgba(0, 0, 0, 0.459);">,</span>
+                                        "image"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">"https://anipic.live/static/pics/Mugen.jpg"</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">},</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">{</span>
+                                        "title"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">"walking-saitama"</span><span style="color:rgba(0, 0, 0, 0.459);">,</span>
+                                        "image"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">"https://anipic.live/static/pics/walking-saitama.png"</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">}</span>
+                            <span style="color:rgba(0, 0, 0, 0.459);">[</span>
+                        <span style="color:rgba(0, 0, 0, 0.459);">}</span>
+                            </code>
+                        </pre>
+            </div>
+        </section>
+
+        <section id="quote" style="display: none;">
+            <h2 class="text-center mb-2 ">Quote Categories</h2>
+            <ul class="list-group text-start w-50 mt-2 border  border-dark " style="display: block; margin: auto; max-height: 250px;
+                        overflow-y: auto;  " id="sfw">
+                <li class="list-group-item ">AOT</li>
+                <li class="list-group-item ">Bnha</li>
+                <li class="list-group-item ">Rainbow</li>
+                <li class="list-group-item ">Bakuman</li>
+                <li class="list-group-item ">Naruto</li>
+                <li class="list-group-item ">Mob-Psycho</li>
+                <li class="list-group-item ">Fma (Full metal Alchemist)</li>
+                <li class="list-group-item ">Haikyuu</li>
+                <li class="list-group-item ">Samurai-Champloo</li>
+                <li class="list-group-item ">Welcome-to-the-nhk</li>
+            </ul>
+            <hr>
+            <h2 class="text-center  mb-2 ">Get Quotes</h2>
+            <table class="table w-50 mx-auto">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">URL</th>
+                        <th scope="col">Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">
+                            http://anipic.live/quotes/category</td>
+                        <td>GET</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="fst-italic mx-auto text-center" style="font-size:10px;">
+                *You can
+                choose category you like from the ones given above.
+            </p>
+            <h5 class="text-center  mb-2 ">Search Parameters</h5>
+            <table class="table w-50 mx-auto">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Default</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td >limit</td>
+                        <td>Integer</td>
+                        <td>12</td>
+                        <td>Number of quotes to return</td>
+                    </tr>
+                    <tr>
+                        <td >offset</td>
+                        <td>Integer</td>
+                        <td>0</td>
+                        <td>Offset parameter controls the starting point within the collection of resource results</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <h2 class="text-center  mb-2 ">Response</h2>
+            <span id="response2" class="justify-content-center mb-3 h5" style="display: flex;"
+                onclick="response2()">{....}</span>
+            <div class="  mb-3  " id="pre2" style="display: none;">
+                <pre>
+                    <code style="color: #E21144;">
+                        <span style="color: rgba(0, 0, 0, 0.459);">{</span>
+                                "count"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">3</span><span style="color:rgba(0, 0, 0, 0.459);">,</span>
+                                "next"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">null</span><span style="color:rgba(0, 0, 0, 0.459);">,</span>
+                                "previous"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">null</span><span style="color:rgba(0, 0, 0, 0.459);">,</span>
+                                "results"<span style="color: rgba(0, 0, 0, 0.459);">:</span> <span style="color: rgba(0, 0, 0, 0.459);">[</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">{</span>
+                                        "quotes"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">"Hero? No! We are pirates! I love heroes but I don't wanna be one!  - Monkey D. Luffy, 'One Piece'."</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">},</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">{</span>
+                                        "quotes"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">"People, who can’t throw something important away, can never hope to change anything. ~ Armin Arlert (Shingeki no Kyojin )"</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">},</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">{</span>
+                                        "quotes"<span style="color: rgba(0, 0, 0, 0.459);">:</span><span style="color: green;">"Whatever you do, enjoy it to the fullest. That is the secret of life.” – Rider"</span>
+                                <span style="color:rgba(0, 0, 0, 0.459);">}</span>
+                            <span style="color:rgba(0, 0, 0, 0.459);">[</span>
+                        <span style="color:rgba(0, 0, 0, 0.459);">}</span>
+                            </code>
+                        </pre>
+            </div>
+        </section>
+    </main>
+    <footer class="mt-4 text-muted text-center bg-dark text-small">
+        <h5 class="mb-1">©anipic.live</h5>
+    </footer>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container  d-flex justify-content-center">
             <a class="navbar-brand " href="/" style="margin-bottom: -20px; margin-top: -8px;">
