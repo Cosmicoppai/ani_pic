@@ -17,6 +17,7 @@ services:
       context: .
     volumes:
     - static-data:/vol/web
+    - templates:/anipic/templates
     depends_on:
       - database
     env_file:
@@ -31,6 +32,7 @@ services:
     - 80:80
     volumes:
     - static-data:/vol/static
+    - templates:/html
     - ./proxy:/etc/nginx/conf.d
     - ./data/certbot/conf:/etc/letsencrypt
     - ./data/certbot/www:/var/www/certbot
