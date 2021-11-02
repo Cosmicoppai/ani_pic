@@ -100,5 +100,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [issues-url]: https://github.com/Cosmicoppai/ani_pic/issues
 [license-shield]: https://img.shields.io/github/license/Cosmicoppai/ani_pic.svg?style=for-the-badge
 [license-url]: https://github.com/Cosmicoppai/ani_pic/blob/master/LICENSE.txt
-[product-screenshot]: statics/anipic.png
-[product2-screenshot]: statics/anipicquotes.png
+[product-screenshot]: anipic/templates/anipic.png
+[product2-screenshot]: anipic/templates/anipicquotes.png
