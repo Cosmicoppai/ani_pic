@@ -1,37 +1,102 @@
-## Welcome to GitHub Pages
+# Anipic
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-You can use the [editor on GitHub](https://github.com/Cosmicoppai/ani_pic/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+[![Product Name Screen Shot][product-screenshot]](https://anipic.live)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+**Image API**
+----
+  Returns json data with images.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+* **URL**
 
-```markdown
-Syntax highlighted code block
+ ` https://anipic.live/pics/type/category`
 
-# Header 1
-## Header 2
-### Header 3
+* **Types:**
 
-- Bulleted
-- List
+  `sfw`
+  `nsfw`
 
-1. Numbered
-2. List
+* **Method:**
 
-**Bold** and _Italic_ and `Code` text
+  `GET`
+  
+* **Success Response:**
 
-[Link](url) and ![Image](src)
-```
+  * **Code:** 200 <br />
+    **Content:** `{"count": 1,"next": null,"previous": null,"results": [{"title": "test","image": "https://anipic.live/static/pics/Mugen.jpg"}]}`
+ 
+* **Error Response:**
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "Not Found" }`
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Cosmicoppai/ani_pic/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+[![Product Name Screen Shot][product2-screenshot]](https://anipic.live)
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+**Quote API**
+----
+  Returns json data with quotes.
+
+* **URL**
+
+  `https://anipic.live/quotes/category`
+
+* **Method:**
+
+  `GET`
+  
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{"count": 4,"next": null,"previous": null,"results": [{"quote": "Once I’m dead, I won’t even be able to remember you. So I’ll win, no matter what. I’ll live, no matter what!"}]}`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "Not Found" }`
+
+
+
+
+
+
+## Built With
+
+* Python
+* Django
+* Postgres
+* HTML-CSS-JavaScript
+* Bootstrap
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/Cosmicoppai/ani_pic.svg?style=for-the-badge
+[contributors-url]: https://github.com/Cosmicoppai/ani_pic/contributors
+[forks-shield]: https://img.shields.io/github/forks/Cosmicoppai/ani_pic.svg?style=for-the-badge
+[forks-url]: https://github.com/Cosmicoppai/ani_pic/network
+[stars-shield]: https://img.shields.io/github/stars/Cosmicoppai/ani_pic.svg?style=for-the-badge
+[stars-url]: https://github.com/Cosmicoppai/ani_pic/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Cosmicoppai/ani_pic.svg?style=for-the-badge
+[issues-url]: https://github.com/Cosmicoppai/ani_pic/issues
+[license-shield]: https://img.shields.io/github/license/Cosmicoppai/ani_pic.svg?style=for-the-badge
+[license-url]: https://github.com/Cosmicoppai/ani_pic/blob/master/LICENSE
+[product-screenshot]: static/anipic.png
+[product2-screenshot]: static/anipicquotes.png
