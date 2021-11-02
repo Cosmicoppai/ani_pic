@@ -96,7 +96,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [stars-url]: https://github.com/Cosmicoppai/ani_pic/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Cosmicoppai/ani_pic.svg?style=for-the-badge
 [issues-url]: https://github.com/Cosmicoppai/ani_pic/issues
-[license-shield]: https://img.shields.io/github/license/Cosmicoppai/ani_pic.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Cosmicoppai/ani_pic?style=for-the-badge
 [license-url]: https://github.com/Cosmicoppai/ani_pic/blob/master/LICENSE
 [product-screenshot]: static/anipic.png
 [product2-screenshot]: static/anipicquotes.png
